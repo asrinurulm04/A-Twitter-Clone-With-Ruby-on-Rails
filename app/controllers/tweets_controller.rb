@@ -1,12 +1,12 @@
-class TweeetsController < ApplicationController
+class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = tweet.all.order("created_at DESC")
-    @tweet = tweet.new
+    @tweets = Tweet.all.order("created_at DESC")
+    @tweet = Tweet.new
   end
 
   # GET /tweets/1
@@ -66,7 +66,7 @@ class TweeetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
-      @tweet = tweet.find(params[:id])
+      @tweet = Tweet.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
